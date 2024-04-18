@@ -35,10 +35,42 @@ function playRound(computerChoice, playerChoice){
         return "You lose! Scissors beats Paper";
     }
     else {
-        return "You win! " + computerChoice + " beats " + playerChoice;
+        return "You win! " + playerChoice + " beats " + computerChoice;
     }
 }
 
+function playGame() {
+    let computerWins = 0;
+    let playerWins = 0;
+    
 
-console.log(getComputerChoice());
-console.log(getPlayerChoice());
+    for (let i = 0; i < 5; i++) {
+        let computerChoice = getComputerChoice();
+        let playerChoice = getPlayerChoice();
+        let result = playRound(computerChoice, playerChoice);
+        console.log(result);
+        trimmedResult = result.substring(0, 5);
+        if (trimmedResult === "You w") {
+            playerWins++;
+        }
+        else if (trimmedResult === "You l") {
+            computerWins++;
+        }
+    }
+
+    if (playerWins > computerWins) {
+        console.log("You win!");
+    }
+    else if (playerWins < computerWins) {
+        console.log("You lose!");
+    }
+    else if (playerWins === computerWins) {
+        console.log("It's a tie!");
+    }
+    
+}
+
+
+
+
+playGame();
