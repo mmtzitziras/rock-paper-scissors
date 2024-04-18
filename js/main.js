@@ -2,6 +2,7 @@ const btns = document.querySelectorAll("button");
 const roundResult = document.querySelector("#round-result");
 const playerWins = document.querySelector("#player-total");
 const computerWins = document.querySelector("#pc-total");
+const gameOver = document.createElement("h1");
 let pWins = 0;
 let cWins = 0;
 
@@ -58,14 +59,18 @@ function playRound(playerChoice){
         playerWins.textContent = "Player Wins: " + pWins;
     }
     roundResult.textContent = result;
+
+    if (pWins === 5){
+        gameOver.textContent = "Game Over! Player Wins!";
+        document.body.appendChild(gameOver);
+    }
+    else if (cWins === 5){
+        gameOver.textContent = "Game Over! Computer Wins!";
+        document.body.appendChild(gameOver);
+    }
     
 }
 
-
-
-
-
-// btns.forEach(btn => btn.addEventListener("click", playRound(btn.id)));
 
 btns.forEach((button) => {
     
@@ -73,40 +78,5 @@ btns.forEach((button) => {
       playRound(button.id);
     });
   });
-
-
-// function playGame() {
-//     let computerWins = 0;
-//     let playerWins = 0;
-    
-
-//     for (let i = 0; i < 5; i++) {
-//         let computerChoice = getComputerChoice();
-//         let playerChoice = getPlayerChoice();
-//         let result = playRound(computerChoice, playerChoice);
-//         console.log(result);
-//         trimmedResult = result.substring(0, 5);
-//         if (trimmedResult === "You w") {
-//             playerWins++;
-//         }
-//         else if (trimmedResult === "You l") {
-//             computerWins++;
-//         }
-//     }
-
-//     if (playerWins > computerWins) {
-//         console.log("You win!");
-//     }
-//     else if (playerWins < computerWins) {
-//         console.log("You lose!");
-//     }
-//     else if (playerWins === computerWins) {
-//         console.log("It's a tie!");
-//     }
-    
-// }
-
-
-
 
 
